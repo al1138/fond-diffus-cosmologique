@@ -262,7 +262,7 @@ const fM=d=>sig(d*1000);
 const SUP='⁰¹²³⁴⁵⁶⁷⁸⁹';const sup=n=>String(n).split('').map(c=>SUP[+c]).join('');
 const fKm=d=>{const km=d*1e9*9.4607e12,e=Math.floor(Math.log10(km)),m=km/Math.pow(10,e);return '≈ '+m.toFixed(1).replace('.',',')+' × 10'+sup(e)+' km'};
 const setD=(id,d)=>{document.getElementById(id).innerHTML=fM(d)+' <span class="mu">millions d\'années-lumière</span><p class="mk">'+fKm(d)+'</p>'};
-const fT=t=>t<0.001?Math.round(t*1e6).toLocaleString('fr-FR')+' ans':t<1?Math.round(t*1000)+' millions d\'années':t.toFixed(1).replace('.',',')+' milliards d\'années';
+const fT=t=>{if(t<0.001)return (Math.round(t*1e6)*1000).toLocaleString('fr-FR')+' ans';if(t<1){const m=t*1000,v=m<10?m.toFixed(1).replace('.',','):String(Math.round(m));return v+(v==='1'||v==='1,0'?' million':' millions')+' d\'années'}return t.toFixed(1).replace('.',',')+' milliards d\'années'};
 const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 function player(btn,sl,onT){let play=false;
  function step(){let u=sl.value/1000+0.0022;if(u>=1){u=1;play=false;btn.textContent='Rejouer'}sl.value=Math.round(u*1000);onT(idxAt(u*u*t0));if(play)requestAnimationFrame(step)}
