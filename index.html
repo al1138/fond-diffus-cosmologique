@@ -97,11 +97,13 @@ a{color:#378ADD}
 <span class="lg"><span class="dt" style="background:#D85A30"></span>Photons du fond diffus</span>
 <span class="lg"><span class="dt" style="background:#1D9E75"></span>Leurs sources</span>
 <span class="lg"><span class="dt" style="background:#888780"></span>Matière</span>
-<span class="lg"><span style="display:inline-block;width:14px;border-top:1.5px dashed #888780"></span>Sphère de Hubble</span>
+<span class="lg"><span style="display:inline-block;width:14px;border-top:1.5px dashed #888780"></span>Sphère de Hubble</span><br>
+<span class="lg"><span style="color:#D85A30;font-size:15px">⟵</span>Vitesse propre du photon (c, vers nous)</span>
+<span class="lg"><span style="color:#BA7517;font-size:15px">⟶</span>Entraînement par l'expansion</span>
 </div>
 <div style="position:relative">
 <canvas id="cv2" style="width:100%;height:420px;display:block;touch-action:pan-y;cursor:grab" aria-label="Vue 3D animée"></canvas>
-<p id="sc2" style="position:absolute;left:0;bottom:4px;margin:0;font-size:12px;color:var(--tx2)"></p>
+<canvas id="ov2" style="position:absolute;left:0;top:0;width:100%;height:420px;pointer-events:none" aria-hidden="true"></canvas>
 <p id="off2" style="position:absolute;right:0;top:0;margin:0;font-size:12px;color:#1D9E75"></p>
 </div>
 <div class="ctl"><button id="pl2">Lecture</button><input type="range" id="sl2" min="0" max="1000" step="1" value="0" aria-label="Temps"></div>
@@ -110,8 +112,10 @@ a{color:#378ADD}
 <div class="grid">
 <div class="mc"><p class="ml">Photons ↔ nous</p><p class="mv" id="b1"></p></div>
 <div class="mc"><p class="ml">Sources ↔ nous</p><p class="mv" id="b2"></p></div>
+<div class="mc"><p class="ml">Expansion au niveau des photons</p><p class="mv" id="b3"></p></div>
+<div class="mc"><p class="ml">Bilan pour les photons</p><p class="mv" id="b4"></p></div>
 </div>
-<p class="note">Le cadre zoome automatiquement pour rester lisible ; la taille du champ est indiquée en bas à gauche.</p>
+<p class="note">Le cadre zoome automatiquement pour rester lisible : la barre d'échelle en bas à gauche indique la distance réelle au centre du schéma. Les flèches représentent des vitesses, pas des distances : la flèche orange vaut toujours c ; la flèche ambre est l'éloignement dû à l'expansion à cet endroit (plafonnée à 3 c pour rester lisible). Quand l'ambre est plus longue que l'orange, le photon recule.</p>
 </div>
 
 <h2>Le satellite Planck</h2>
@@ -190,7 +194,7 @@ const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(45,1,0.1,300);cam.
 const G=new THREE.Group();G.rotation.x=0.35;scene.add(G);
 function fib(n){const p=[],g=Math.PI*(3-Math.sqrt(5));for(let i=0;i<n;i++){const y=1-2*(i+0.5)/n,r=Math.sqrt(1-y*y),th=g*i;p.push([Math.cos(th)*r,y,Math.sin(th)*r])}return p}
 function shell(n,col,sz){const g=new THREE.BufferGeometry(),f=new Float32Array(n*3);fib(n).forEach((v,i)=>f.set(v,i*3));g.setAttribute('position',new THREE.BufferAttribute(f,3));const m=new THREE.Points(g,new THREE.PointsMaterial({color:col,size:sz,sizeAttenuation:false,transparent:true,opacity:.85}));G.add(m);return m}
-const ph=shell(900,0xD85A30,3),src=shell(600,0x1D9E75,3);
+const ph=shell(600,0xD85A30,3),src=shell(600,0x1D9E75,3);
 const NG=2000,base=new Float32Array(NG*3),gp=new Float32Array(NG*3);
 for(let i=0;i<NG;i++){const u=Math.random(),c=Math.acos(2*Math.random()-1),p=2*Math.PI*Math.random(),r=1.5*Xr*Math.pow(u,.9);base[i*3]=r*Math.sin(c)*Math.cos(p);base[i*3+1]=r*Math.cos(c);base[i*3+2]=r*Math.sin(c)*Math.sin(p)}
 const gg=new THREE.BufferGeometry();gg.setAttribute('position',new THREE.BufferAttribute(gp,3));
@@ -199,6 +203,20 @@ const hub=new THREE.Group();G.add(hub);
 [[0,0],[Math.PI/2,0],[0,Math.PI/2]].forEach(r=>{const pts=[];for(let k=0;k<=96;k++){const a=k/96*Math.PI*2;pts.push(new THREE.Vector3(Math.cos(a),0,Math.sin(a)))}const l=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineDashedMaterial({color:0x888780,dashSize:.04,gapSize:.04,transparent:true,opacity:.8}));l.computeLineDistances();l.rotation.x=r[0];l.rotation.z=r[1];hub.add(l)});
 const meMat=new THREE.MeshBasicMaterial();const me=new THREE.Mesh(new THREE.SphereGeometry(.28,16,12),meMat);G.add(me);
 const setMe=()=>meMat.color.set(css('--tx')||'#888');setMe();matchMedia('(prefers-color-scheme:dark)').addEventListener('change',setMe);
+const L0=1.4,CAP=3;
+const dirs=[];for(let k=0;k<8;k++){const t=k/8*Math.PI*2;dirs.push(new THREE.Vector3(Math.cos(t),0,Math.sin(t)))}
+const ov=document.getElementById('ov2'),ox=ov.getContext('2d');let OW=0,OH=0,AR=[],SB=null;
+function ovSize(){const r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;OW=r.width;OH=r.height;ov.width=OW*d;ov.height=OH*d;ox.setTransform(d,0,0,d,0,0)}
+function proj(v){const p=v.clone().applyMatrix4(G.matrixWorld).project(cam);return[(p.x+1)/2*OW,(1-p.y)/2*OH]}
+function arrow(p,q,col){const dx=q[0]-p[0],dy=q[1]-p[1],l=Math.hypot(dx,dy);if(l<4)return;const ux=dx/l,uy=dy/l,h=Math.min(9,l*.5);
+ const hd=()=>{ox.beginPath();ox.moveTo(q[0],q[1]);ox.lineTo(q[0]-ux*h-uy*h*.55,q[1]-uy*h+ux*h*.55);ox.lineTo(q[0]-ux*h+uy*h*.55,q[1]-uy*h-ux*h*.55);ox.closePath()};
+ ox.lineCap='round';ox.lineJoin='round';ox.strokeStyle=css('--card');ox.lineWidth=6;ox.beginPath();ox.moveTo(p[0],p[1]);ox.lineTo(q[0]-ux*h*.6,q[1]-uy*h*.6);ox.stroke();hd();ox.lineWidth=4;ox.stroke();
+ ox.strokeStyle=col;ox.fillStyle=col;ox.lineWidth=2.5;ox.beginPath();ox.moveTo(p[0],p[1]);ox.lineTo(q[0]-ux*h*.6,q[1]-uy*h*.6);ox.stroke();hd();ox.fill()}
+function drawOv(){if(!OW)return;ox.clearRect(0,0,OW,OH);G.updateMatrixWorld();
+ AR.forEach(([d,r0,r1,col])=>arrow(proj(d.clone().multiplyScalar(r0)),proj(d.clone().multiplyScalar(r1)),col));
+ if(SB){const c=css('--tx2'),y=OH-12,L=SB.L;ox.strokeStyle=c;ox.fillStyle=c;ox.lineWidth=1.5;ox.beginPath();ox.moveTo(4,y);ox.lineTo(4+L,y);ox.moveTo(4,y-5);ox.lineTo(4,y+5);ox.moveTo(4+L,y-5);ox.lineTo(4+L,y+5);ox.stroke();ox.font='12px system-ui,sans-serif';ox.textAlign='left';ox.fillText(SB.t,4,y-10)}}
+function scaleBar(i){const vh=2*30*Math.tan(cam.fov*Math.PI/360),ppu=OH/vh,gpu=Rv[i]/10;
+ const raw=90/ppu*gpu,p=Math.pow(10,Math.floor(Math.log10(raw))),m=raw/p,nice=(m<1.5?1:m<3.5?2:m<7.5?5:10)*p;SB={L:nice/gpu*ppu,t:fG(nice)}}
 let cur=0,drag=false,lx=0;
 function upd(i){cur=i;const a=A[i],s=10/Rv[i];
  for(let k=0;k<NG;k++){const x=base[k*3]*a*s,y=base[k*3+1]*a*s,z=base[k*3+2]*a*s;if(x*x+y*y+z*z>196){gp[k*3]=0;gp[k*3+1]=0;gp[k*3+2]=9999}else{gp[k*3]=x;gp[k*3+1]=y;gp[k*3+2]=z}}
@@ -206,19 +224,23 @@ function upd(i){cur=i;const a=A[i],s=10/Rv[i];
  ph.scale.setScalar(Math.max(Dp[i]*s,.001));ph.visible=i<N;
  const rs=Ds[i]*s;src.visible=rs<14;src.scale.setScalar(rs);
  const rh=RH[i]*s;hub.visible=rh<14;hub.scale.setScalar(rh);
- document.getElementById('sc2').textContent='Rayon du champ : '+fG(Rv[i]*.77);
+ const H=Hf(a),vp=H*Dp[i],vs=H*Ds[i],rp=Dp[i]*s,inside=i<N&&rp>.5;
+ AR=[];dirs.forEach(d=>{if(inside){AR.push([d,rp,Math.max(rp-L0,0),'#D85A30']);AR.push([d,rp,rp+L0*Math.min(vp,CAP),'#BA7517'])}if(src.visible&&rs<12)AR.push([d,rs,rs+L0*Math.min(vs,CAP),'#BA7517'])});
+ scaleBar(i);
+ document.getElementById('b3').textContent=i>=N?'—':(vp<10?vp.toFixed(1):Math.round(vp)).toString().replace('.',',')+' × c';
+ document.getElementById('b4').textContent=i>=N?'arrivés':vp>1?'reculent':'avancent';
  document.getElementById('off2').textContent=src.visible?'':'Sources hors champ →';
  document.getElementById('tt2').textContent='t = '+fT(T[i])+' après le Big Bang';
  document.getElementById('b1').textContent=fG(Dp[i]);document.getElementById('b2').textContent=fG(Ds[i]);
  document.getElementById('st2').textContent=i>=N?'Aujourd\'hui : la sphère de photons se referme sur nous. C\'est le fond diffus qu\'on capte dans toutes les directions.':i===0?'Recombinaison : chaque point de l\'espace émet de la lumière. Seule la sphère orange contient celle qui nous arrivera aujourd\'hui.':Dp[i]>RH[i]?'Les photons foncent vers nous, mais ils sont au-delà de la sphère de Hubble : l\'expansion les éloigne encore.':'Les photons sont dans la sphère de Hubble : ils gagnent du terrain, la sphère orange rétrécit.'}
 function size(){const r=cv.getBoundingClientRect();ren.setSize(r.width,r.height,false);cam.aspect=r.width/r.height;cam.fov=r.width<r.height*1.1?55:42;cam.updateProjectionMatrix()}
-function loop(){if(!drag)G.rotation.y+=.003;ren.render(scene,cam);requestAnimationFrame(loop)}
+function loop(){if(!drag)G.rotation.y+=.003;ren.render(scene,cam);drawOv();requestAnimationFrame(loop)}
 player(document.getElementById('pl2'),document.getElementById('sl2'),upd);
 cv.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;cv.style.cursor='grabbing'});
 window.addEventListener('pointermove',e=>{if(drag){G.rotation.y+=(e.clientX-lx)*.01;lx=e.clientX}});
 window.addEventListener('pointerup',()=>{drag=false;cv.style.cursor='grab'});
-window.addEventListener('resize',size);
-size();upd(0);loop();
+window.addEventListener('resize',()=>{size();ovSize();upd(cur)});
+size();ovSize();upd(0);loop();
 })();
 </script>
 </body>
