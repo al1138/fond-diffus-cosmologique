@@ -19,7 +19,9 @@ p{margin:0 0 1rem}
 .mc{background:var(--neu);border-radius:8px;padding:10px 12px}
 .mc p{margin:0}
 .ml{font-size:12px;color:var(--tx2)}
-.mv{font-size:18px;font-weight:500}
+.mv{font-size:18px;font-weight:500;line-height:1.3}
+.mu{font-size:12px;font-weight:400;color:var(--tx2)}
+.mk{font-size:12px;color:var(--tx3);margin-top:2px!important}
 .lg{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--tx2);margin-right:12px}
 .sw{display:inline-block;width:16px;height:0;border-top:2.5px solid}
 .dt{display:inline-block;width:9px;height:9px;border-radius:50%}
@@ -69,7 +71,7 @@ a{color:#378ADD}
 <span class="lg"><span class="sw" style="border-color:#1D9E75"></span>Sa source</span>
 <span class="lg"><span class="sw" style="border-color:#888780;border-top-style:dashed"></span>Sphère de Hubble</span>
 </div>
-<canvas id="cv1" style="width:100%;height:300px;display:block" aria-label="Graphique distance en fonction du temps"></canvas>
+<canvas id="cv1" style="width:100%;height:320px;display:block" aria-label="Graphique distance en fonction du temps"></canvas>
 <div class="ctl"><button id="pl1">Lecture</button><input type="range" id="sl1" min="0" max="1000" step="1" value="0" aria-label="Temps"></div>
 <p class="tt" id="tt1"></p>
 <p class="st" id="st1"></p>
@@ -79,15 +81,15 @@ a{color:#378ADD}
 <div class="mc"><p class="ml">Fuite de la source</p><p class="mv" id="a3"></p></div>
 <div class="mc"><p class="ml">Étirement / température</p><p class="mv" id="a4"></p></div>
 </div>
-<p class="note">Distances « propres » (mesurées à l'instant t), en milliards d'années-lumière (Gal). Le temps avance lentement au début pour détailler les premiers milliards d'années.</p>
+<p class="note">Distances « propres » (mesurées à l'instant t), en millions d'années-lumière. Le temps avance lentement au début pour détailler les premiers milliards d'années.</p>
 </div>
 <ul>
 <li><strong>La courbe orange monte d'abord</strong> : le photon avance vers nous, mais tant qu'il est au-delà de la sphère de Hubble, l'espace s'étire plus vite qu'il ne le parcourt.</li>
-<li><strong>Vers 4 milliards d'années, elle redescend</strong> : le photon atteint sa distance maximale (environ 5,8 Gal), puis se rapproche jusqu'à nous atteindre aujourd'hui.</li>
+<li><strong>Vers 4 milliards d'années, elle redescend</strong> : le photon atteint sa distance maximale (environ 5 800 millions d'années-lumière), puis se rapproche jusqu'à nous atteindre aujourd'hui.</li>
 <li><strong>La courbe verte ne fait que s'éloigner</strong> : la source passe d'environ 42 millions à 46 milliards d'années-lumière, en s'éloignant plus vite que la lumière.</li>
 </ul>
 <p>Ce même étirement de l'espace a allongé les longueurs d'onde d'un facteur d'environ 1 100. La lumière d'un gaz à 3 000 K, qui brillait en visible et en infrarouge, nous arrive donc sous forme de micro-ondes à 2,7 K. Et le refroidissement continue : la température du fond diffus baisse d'environ 2 milliardièmes de degré par an.</p>
-<p>La <strong>sphère de Hubble</strong> est le résultat d'un calcul : avec la loi de Hubble <em>v = H × d</em>, c'est la distance où la vitesse d'éloignement égale <em>c</em>, soit <em>R = c / H</em>, environ 14 Gal aujourd'hui. Ce n'est pas un objet physique, et comme H change avec le temps, ce rayon change aussi.</p>
+<p>La <strong>sphère de Hubble</strong> est le résultat d'un calcul : avec la loi de Hubble <em>v = H × d</em>, c'est la distance où la vitesse d'éloignement égale <em>c</em>, soit <em>R = c / H</em>, environ 14 400 millions d'années-lumière aujourd'hui. Ce n'est pas un objet physique, et comme H change avec le temps, ce rayon change aussi.</p>
 
 <h2>Animation 2 — la même chose en 3D</h2>
 <p>Il n'y a pas de bord de l'univers où poser un observateur. On se place donc au centre de notre sphère observable : ce n'est pas un privilège, n'importe quelle galaxie verrait la même chose autour d'elle. L'espace est en 3D, le temps est la quatrième dimension que vous faites défiler. Faites glisser horizontalement pour pivoter.</p>
@@ -99,7 +101,7 @@ a{color:#378ADD}
 <span class="lg"><span class="dt" style="background:#888780"></span>Matière</span>
 <span class="lg"><span style="display:inline-block;width:14px;border-top:1.5px dashed #888780"></span>Sphère de Hubble</span><br>
 <span class="lg"><span style="color:#D85A30;font-size:15px">⟵</span>Vitesse propre du photon (c, vers nous)</span>
-<span class="lg"><span style="color:#BA7517;font-size:15px">⟶</span>Entraînement par l'expansion</span>
+<span class="lg"><span style="color:#378ADD;font-size:15px">⟶</span>Entraînement par l'expansion</span>
 </div>
 <div style="position:relative">
 <canvas id="cv2" style="width:100%;height:420px;display:block;touch-action:pan-y;cursor:grab" aria-label="Vue 3D animée"></canvas>
@@ -115,7 +117,7 @@ a{color:#378ADD}
 <div class="mc"><p class="ml">Expansion au niveau des photons</p><p class="mv" id="b3"></p></div>
 <div class="mc"><p class="ml">Bilan pour les photons</p><p class="mv" id="b4"></p></div>
 </div>
-<p class="note">Le cadre zoome automatiquement pour rester lisible : la barre d'échelle en bas à gauche indique la distance réelle au centre du schéma. Les flèches représentent des vitesses, pas des distances : la flèche orange vaut toujours c ; la flèche ambre est l'éloignement dû à l'expansion à cet endroit (plafonnée à 3 c pour rester lisible). Quand l'ambre est plus longue que l'orange, le photon recule.</p>
+<p class="note">Le cadre zoome automatiquement pour rester lisible : la barre d'échelle en bas à gauche indique la distance réelle au centre du schéma. Les flèches représentent des vitesses, pas des distances : la flèche orange vaut toujours c ; la flèche bleue est l'éloignement dû à l'expansion à cet endroit (plafonnée à 3 c pour rester lisible). Quand la bleue est plus longue que l'orange, le photon recule.</p>
 </div>
 
 <h2>Le satellite Planck</h2>
@@ -150,7 +152,11 @@ for(let i=N-1;i>=0;i--){const am=Math.exp(l0+(i+0.5)*dl);X[i]=X[i+1]+dl/(am*Hf(a
 const t0=T[N],Xr=X[0];
 const Dp=A.map((a,i)=>a*X[i]),Ds=A.map(a=>a*Xr),RH=A.map(a=>1/Hf(a));
 const idxAt=t=>{let lo=0,hi=N;while(hi-lo>1){const m=(lo+hi)>>1;if(T[m]<t)lo=m;else hi=m}return hi};
-const fG=d=>(d<0.1?Math.round(d*1000)+' Mal':(d<10?d.toFixed(1):Math.round(d))+' Gal').replace('.',',');
+const sig=x=>{if(x<10)return x.toFixed(1).replace('.',',');const p=Math.pow(10,Math.max(0,Math.floor(Math.log10(x))-2));return (Math.round(x/p)*p).toLocaleString('fr-FR')};
+const fM=d=>sig(d*1000);
+const SUP='⁰¹²³⁴⁵⁶⁷⁸⁹';const sup=n=>String(n).split('').map(c=>SUP[+c]).join('');
+const fKm=d=>{const km=d*1e9*9.4607e12,e=Math.floor(Math.log10(km)),m=km/Math.pow(10,e);return '≈ '+m.toFixed(1).replace('.',',')+' × 10'+sup(e)+' km'};
+const setD=(id,d)=>{document.getElementById(id).innerHTML=fM(d)+' <span class="mu">millions d\'années-lumière</span><p class="mk">'+fKm(d)+'</p>'};
 const fT=t=>t<0.001?Math.round(t*1e6).toLocaleString('fr-FR')+' ans':t<1?Math.round(t*1000)+' millions d\'années':t.toFixed(1).replace('.',',')+' milliards d\'années';
 const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 function player(btn,sl,onT){let play=false;
@@ -160,24 +166,24 @@ function player(btn,sl,onT){let play=false;
 
 (function(){
 const cv=document.getElementById('cv1'),cx=cv.getContext('2d');
-const YM=16,mL=30,mB=22,mT=8,mR=8;let W,Hh,cur=0;
+const YM=16,mL=46,mB=36,mT=24,mR=8;let W,Hh,cur=0;
 function size(){const r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;W=r.width;Hh=r.height;cv.width=W*d;cv.height=Hh*d;cx.setTransform(d,0,0,d,0,0)}
 const px=x=>mL+(x/t0)*(W-mL-mR),py=y=>Hh-mB-(y/YM)*(Hh-mB-mT);
 function curve(arr,col,dash,w){cx.save();cx.beginPath();cx.rect(mL,mT,W-mL-mR,Hh-mB-mT);cx.clip();cx.strokeStyle=col;cx.lineWidth=w;cx.setLineDash(dash);cx.beginPath();for(let i=0;i<=N;i+=3){const a=px(T[i]),b=py(arr[i]);i?cx.lineTo(a,b):cx.moveTo(a,b)}cx.lineTo(px(T[N]),py(arr[N]));cx.stroke();cx.restore()}
 function draw(){cx.clearRect(0,0,W,Hh);cx.font='11px system-ui,sans-serif';cx.fillStyle=css('--tx2');cx.strokeStyle=css('--bd');cx.lineWidth=1;cx.setLineDash([]);
- for(let y=0;y<=YM;y+=4){cx.beginPath();cx.moveTo(mL,py(y));cx.lineTo(W-mR,py(y));cx.stroke();cx.textAlign='right';cx.fillText(y,mL-5,py(y)+4)}
- for(let x=0;x<=12;x+=4){cx.textAlign='center';cx.fillText(x+' Ga',px(x),Hh-6)}
+ for(let y=0;y<=YM;y+=4){cx.beginPath();cx.moveTo(mL,py(y));cx.lineTo(W-mR,py(y));cx.stroke();cx.textAlign='right';cx.fillText((y*1000).toLocaleString('fr-FR'),mL-5,py(y)+4)}
+ for(let x=0;x<=12;x+=4){cx.textAlign='center';cx.fillText(x,px(x),Hh-mB+16)}cx.textAlign='left';cx.fillText('↑ millions d\'années-lumière',4,12);cx.textAlign='right';cx.fillText('milliards d\'années →',W-mR,Hh-3);
  curve(RH,'#888780',[4,4],1.2);curve(Ds,'#1D9E75',[],2);curve(Dp,'#D85A30',[],2.5);
- const xe=px(T[Ds.findIndex(d=>d>YM)]);cx.fillStyle='#1D9E75';cx.textAlign='left';cx.fillText('↑ 46 Gal aujourd\'hui',Math.min(xe+4,W-130),mT+12);
+ const xe=px(T[Ds.findIndex(d=>d>YM)]);cx.fillStyle='#1D9E75';cx.textAlign='left';cx.fillText('↑ 45 300 aujourd\'hui',Math.min(xe+6,W-120),mT+14);
  const i=cur,x1=px(T[i]);cx.strokeStyle=css('--tx3');cx.setLineDash([2,3]);cx.beginPath();cx.moveTo(x1,mT);cx.lineTo(x1,Hh-mB);cx.stroke();cx.setLineDash([]);
  if(Ds[i]<=YM){cx.fillStyle='#1D9E75';cx.beginPath();cx.arc(x1,py(Ds[i]),5,0,7);cx.fill()}
  cx.fillStyle='#D85A30';cx.beginPath();cx.arc(x1,py(Dp[i]),6,0,7);cx.fill()}
 function info(){const i=cur,a=A[i];
  document.getElementById('tt1').textContent='t = '+fT(T[i])+' après le Big Bang';
- document.getElementById('a1').textContent=fG(Dp[i]);document.getElementById('a2').textContent=fG(Ds[i]);
+ setD('a1',Dp[i]);setD('a2',Ds[i]);
  document.getElementById('a3').textContent=(Hf(a)*Ds[i]).toFixed(1).replace('.',',')+' × c';
- const K=2.725/a;document.getElementById('a4').textContent='×'+Math.round(1/a).toLocaleString('fr-FR')+' · '+(K<10?K.toFixed(1).replace('.',','):Math.round(K).toLocaleString('fr-FR'))+' K';
- document.getElementById('st1').textContent=i>=N?'Arrivée : le photon nous atteint. Sa source est maintenant à 46 Gal et s\'éloigne à plus de 3 fois c.':i===0?'Recombinaison : l\'univers devient transparent. Le photon part vers nous de partout à la fois.':Dp[i]>RH[i]?'Le photon avance vers nous, mais il est hors de la sphère de Hubble : l\'expansion l\'emporte encore, sa distance augmente.':'Le photon est entré dans la sphère de Hubble : il gagne enfin du terrain et se rapproche.'}
+ const K=2.725/a;document.getElementById('a4').textContent='×'+sig(1/a)+' · '+(K<10?K.toFixed(1).replace('.',','):Math.round(K).toLocaleString('fr-FR'))+' K';
+ document.getElementById('st1').textContent=i>=N?'Arrivée : le photon nous atteint. Sa source est maintenant à 45 300 millions d\'années-lumière et s\'éloigne à plus de 3 fois c.':i===0?'Recombinaison : l\'univers devient transparent. Le photon part vers nous de partout à la fois.':Dp[i]>RH[i]?'Le photon avance vers nous, mais il est hors de la sphère de Hubble : l\'expansion l\'emporte encore, sa distance augmente.':'Le photon est entré dans la sphère de Hubble : il gagne enfin du terrain et se rapproche.'}
 const set=i=>{cur=i;draw();info()};
 player(document.getElementById('pl1'),document.getElementById('sl1'),set);
 window.addEventListener('resize',()=>{size();draw()});
@@ -214,9 +220,9 @@ function arrow(p,q,col){const dx=q[0]-p[0],dy=q[1]-p[1],l=Math.hypot(dx,dy);if(l
  ox.strokeStyle=col;ox.fillStyle=col;ox.lineWidth=2.5;ox.beginPath();ox.moveTo(p[0],p[1]);ox.lineTo(q[0]-ux*h*.6,q[1]-uy*h*.6);ox.stroke();hd();ox.fill()}
 function drawOv(){if(!OW)return;ox.clearRect(0,0,OW,OH);G.updateMatrixWorld();
  AR.forEach(([d,r0,r1,col])=>arrow(proj(d.clone().multiplyScalar(r0)),proj(d.clone().multiplyScalar(r1)),col));
- if(SB){const c=css('--tx2'),y=OH-12,L=SB.L;ox.strokeStyle=c;ox.fillStyle=c;ox.lineWidth=1.5;ox.beginPath();ox.moveTo(4,y);ox.lineTo(4+L,y);ox.moveTo(4,y-5);ox.lineTo(4,y+5);ox.moveTo(4+L,y-5);ox.lineTo(4+L,y+5);ox.stroke();ox.font='12px system-ui,sans-serif';ox.textAlign='left';ox.fillText(SB.t,4,y-10)}}
+ if(SB){const c=css('--tx2'),y=OH-12,L=SB.L;ox.strokeStyle=c;ox.fillStyle=c;ox.lineWidth=1.5;ox.beginPath();ox.moveTo(4,y);ox.lineTo(4+L,y);ox.moveTo(4,y-5);ox.lineTo(4,y+5);ox.moveTo(4+L,y-5);ox.lineTo(4+L,y+5);ox.stroke();ox.font='12px system-ui,sans-serif';ox.textAlign='left';ox.fillText(SB.t,4,y-24);ox.fillStyle=css('--tx3');ox.font='11px system-ui,sans-serif';ox.fillText(SB.k,4,y-10)}}
 function scaleBar(i){const vh=2*30*Math.tan(cam.fov*Math.PI/360),ppu=OH/vh,gpu=Rv[i]/10;
- const raw=90/ppu*gpu,p=Math.pow(10,Math.floor(Math.log10(raw))),m=raw/p,nice=(m<1.5?1:m<3.5?2:m<7.5?5:10)*p;SB={L:nice/gpu*ppu,t:fG(nice)}}
+ const raw=90/ppu*gpu,p=Math.pow(10,Math.floor(Math.log10(raw))),m=raw/p,nice=(m<1.5?1:m<3.5?2:m<7.5?5:10)*p;SB={L:nice/gpu*ppu,t:fM(nice)+' millions d\'années-lumière',k:fKm(nice)}}
 let cur=0,drag=false,lx=0;
 function upd(i){cur=i;const a=A[i],s=10/Rv[i];
  for(let k=0;k<NG;k++){const x=base[k*3]*a*s,y=base[k*3+1]*a*s,z=base[k*3+2]*a*s;if(x*x+y*y+z*z>196){gp[k*3]=0;gp[k*3+1]=0;gp[k*3+2]=9999}else{gp[k*3]=x;gp[k*3+1]=y;gp[k*3+2]=z}}
@@ -225,13 +231,13 @@ function upd(i){cur=i;const a=A[i],s=10/Rv[i];
  const rs=Ds[i]*s;src.visible=rs<14;src.scale.setScalar(rs);
  const rh=RH[i]*s;hub.visible=rh<14;hub.scale.setScalar(rh);
  const H=Hf(a),vp=H*Dp[i],vs=H*Ds[i],rp=Dp[i]*s,inside=i<N&&rp>.5;
- AR=[];dirs.forEach(d=>{if(inside){AR.push([d,rp,Math.max(rp-L0,0),'#D85A30']);AR.push([d,rp,rp+L0*Math.min(vp,CAP),'#BA7517'])}if(src.visible&&rs<12)AR.push([d,rs,rs+L0*Math.min(vs,CAP),'#BA7517'])});
+ AR=[];dirs.forEach(d=>{if(inside){AR.push([d,rp,Math.max(rp-L0,0),'#D85A30']);AR.push([d,rp,rp+L0*Math.min(vp,CAP),'#378ADD'])}if(src.visible&&rs<12)AR.push([d,rs,rs+L0*Math.min(vs,CAP),'#378ADD'])});
  scaleBar(i);
  document.getElementById('b3').textContent=i>=N?'—':(vp<10?vp.toFixed(1):Math.round(vp)).toString().replace('.',',')+' × c';
  document.getElementById('b4').textContent=i>=N?'arrivés':vp>1?'reculent':'avancent';
  document.getElementById('off2').textContent=src.visible?'':'Sources hors champ →';
  document.getElementById('tt2').textContent='t = '+fT(T[i])+' après le Big Bang';
- document.getElementById('b1').textContent=fG(Dp[i]);document.getElementById('b2').textContent=fG(Ds[i]);
+ setD('b1',Dp[i]);setD('b2',Ds[i]);
  document.getElementById('st2').textContent=i>=N?'Aujourd\'hui : la sphère de photons se referme sur nous. C\'est le fond diffus qu\'on capte dans toutes les directions.':i===0?'Recombinaison : chaque point de l\'espace émet de la lumière. Seule la sphère orange contient celle qui nous arrivera aujourd\'hui.':Dp[i]>RH[i]?'Les photons foncent vers nous, mais ils sont au-delà de la sphère de Hubble : l\'expansion les éloigne encore.':'Les photons sont dans la sphère de Hubble : ils gagnent du terrain, la sphère orange rétrécit.'}
 function size(){const r=cv.getBoundingClientRect();ren.setSize(r.width,r.height,false);cam.aspect=r.width/r.height;cam.fov=r.width<r.height*1.1?55:42;cam.updateProjectionMatrix()}
 function loop(){if(!drag)G.rotation.y+=.003;ren.render(scene,cam);drawOv();requestAnimationFrame(loop)}
