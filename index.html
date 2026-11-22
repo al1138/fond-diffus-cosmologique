@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fond diffus cosmologique — pourquoi voit-on encore la lumière du Big Bang ?</title>
-<meta name="description" content="Comment peut-on voir la lumière émise 380 000 ans après le Big Bang ? Deux animations calculées avec le modèle cosmologique standard.">
+<meta name="description" content="Comment peut-on voir la lumière émise 380 000 ans après le Big Bang ? Deux animations calculées avec le modèle cosmologique standard.">
 <style>
 :root{--bg:#faf9f5;--card:#ffffff;--tx:#1f1e1d;--tx2:#5f5e5a;--tx3:#888780;--bd:rgba(0,0,0,.12);--bd2:rgba(0,0,0,.25);--neu:rgba(0,0,0,.045)}
 @media (prefers-color-scheme:dark){:root{--bg:#1a1a19;--card:#232322;--tx:#ededeb;--tx2:#b4b2a9;--tx3:#888780;--bd:rgba(255,255,255,.1);--bd2:rgba(255,255,255,.25);--neu:rgba(255,255,255,.06)}}
@@ -35,6 +35,21 @@ input[type=range]{flex:1;accent-color:#D85A30}
 .note{font-size:13px;color:var(--tx3);margin:8px 0 0}
 ul{padding-left:1.2rem}
 li{margin-bottom:.4rem}
+h3{font-size:17px;font-weight:500;margin:1.5rem 0 .4rem}
+.fr{margin:1.25rem 0}
+.row{display:grid;grid-template-columns:96px 18px minmax(0,1fr);column-gap:10px}
+.row .tm{font-size:13px;color:var(--tx2);text-align:right;padding-top:2px;line-height:1.4}
+.row .rl{position:relative}
+.row .rl:before{content:"";position:absolute;left:8px;top:0;bottom:0;border-left:3px solid var(--c)}
+.row .rl:after{content:"";position:absolute;left:3px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--c);border:2px solid var(--card)}
+.row .bx{padding:0 0 1.1rem}
+.row .bx b{font-weight:500}
+.row .bx p{margin:0;font-size:14px;line-height:1.55}
+.row .cal{font-size:12px;color:var(--tx3);margin-top:2px!important}
+.row.hl .bx{background:rgba(216,90,48,.1);border-radius:8px;padding:6px 10px;margin-bottom:1.1rem}
+.row.fut{opacity:.75}
+.row.fut .rl:before{border-left-style:dashed}
+.sep{font-size:12px;color:var(--tx3);margin:.25rem 0 .75rem 124px;letter-spacing:.02em}
 footer{margin-top:3rem;font-size:13px;color:var(--tx3);border-top:.5px solid var(--bd);padding-top:1rem}
 a{color:#378ADD}
 </style>
@@ -42,6 +57,7 @@ a{color:#378ADD}
 <body>
 <main>
 <h1><a href="https://fr.wikipedia.org/wiki/Fond_diffus_cosmologique" style="color:inherit;text-decoration:none">Fond diffus cosmologique</a></h1>
+<p style="font-size:19px;color:var(--tx2);margin:-.25rem 0 1.25rem">Pourquoi voyons-nous encore une lumière émise il y a 13,8 milliards d'années ?</p>
 <p class="lead">Les astronomes captent aujourd'hui une lumière émise juste après le Big Bang, il y a 13,8 milliards d'années. C'est surprenant : cette lumière et la matière qui allait former notre galaxie sont nées au même moment, au même endroit. Et rien ne va plus vite que la lumière. Alors comment cette lumière n'est-elle pas partie depuis longtemps, hors de notre portée ? Pourquoi est-elle encore en train de nous arriver ?</p>
 <p>Voici la réponse, avec deux animations calculées à partir du modèle cosmologique standard.</p>
 
@@ -49,7 +65,7 @@ a{color:#378ADD}
 <p>Dans toutes les directions du ciel, on capte un faible rayonnement dans le domaine des <strong>micro-ondes</strong>, invisible à l'œil nu. On l'appelle aussi <em>rayonnement fossile</em>. Il a trois propriétés remarquables :</p>
 <ul>
 <li><strong>Il est partout.</strong> Chaque centimètre cube de l'univers, y compris autour de vous, contient environ 400 de ces photons.</li>
-<li><strong>Il est extrêmement froid et régulier.</strong> Sa température est de 2,725 K, soit environ −270 °C. Son spectre est celui d'un « corps noir » parfait, la signature d'un rayonnement émis par une matière en équilibre thermique.</li>
+<li><strong>Il est extrêmement froid et régulier.</strong> Sa température est de 2,725 K, soit environ −270 °C. Son spectre est celui d'un « corps noir » parfait, la signature d'un rayonnement émis par une matière en équilibre thermique.</li>
 <li><strong>Il est presque uniforme.</strong> Les écarts de température d'un point du ciel à l'autre ne dépassent pas un cent-millième de degré. Ces minuscules irrégularités sont les germes des galaxies.</li>
 </ul>
 <figure style="margin:1.25rem 0 1.5rem">
@@ -58,7 +74,7 @@ a{color:#378ADD}
 </figure>
 
 <h2>D'où vient cette lumière</h2>
-<p>Le fond diffus cosmologique n'a pas été émis au Big Bang lui-même, mais environ <strong>380 000 ans après</strong>. Avant, l'univers était un plasma chaud de protons et d'électrons libres, opaque comme un brouillard : la lumière y rebondissait sans cesse. Quand la température est descendue vers 3 000 K, la lumière n'avait plus assez d'énergie pour arracher les électrons aux noyaux. Les premiers atomes d'hydrogène et d'hélium se sont formés, l'univers est devenu transparent, et cette lumière voyage librement depuis. Cette transition, la <em>recombinaison</em>, ne s'est pas faite d'un coup : elle a duré environ 100 000 ans.</p>
+<p>Le fond diffus cosmologique n'a pas été émis au Big Bang lui-même, mais environ <strong>380 000 ans après</strong>. Avant, l'univers était un plasma chaud de protons et d'électrons libres, opaque comme un brouillard : la lumière y rebondissait sans cesse. Quand la température est descendue vers 3 000 K, la lumière n'avait plus assez d'énergie pour arracher les électrons aux noyaux. Les premiers atomes d'hydrogène et d'hélium se sont formés, l'univers est devenu transparent, et cette lumière voyage librement depuis. Cette transition, la <em>recombinaison</em>, ne s'est pas faite d'un coup : elle a duré environ 100 000 ans.</p>
 <p>La zone d'où partent les photons qu'on reçoit aujourd'hui s'appelle la <strong>surface de dernière diffusion</strong>. C'est une sphère centrée sur nous, et chaque observateur de l'univers a la sienne. C'est la plus vieille image de l'univers qu'on puisse obtenir avec de la lumière : au-delà, tout est opaque.</p>
 <p>Point essentiel : elle a été émise <strong>partout à la fois</strong>. Le Big Bang n'est pas une explosion en un point d'un espace vide ; c'est tout l'espace qui était chaud et dense. À chaque instant, on reçoit les photons partis d'une région dont la distance est juste celle qu'il fallait pour qu'ils arrivent maintenant. L'an prochain, on verra ceux d'une région un peu plus lointaine.</p>
 <p>Et l'expansion <strong>peut</strong> dépasser la vitesse de la lumière : la limite <em>c</em> vaut pour ce qui se déplace <em>dans</em> l'espace, pas pour l'étirement de l'espace lui-même.</p>
@@ -67,7 +83,7 @@ a{color:#378ADD}
 <p>Pensez à un orage avec un long éclair horizontal, de plusieurs kilomètres. Tout l'éclair claque au même instant, et pourtant on n'entend pas un seul « clac » : on entend un tonnerre qui <strong>roule</strong> pendant plusieurs secondes. Le son de la partie la plus proche arrive en premier, puis celui des parties de plus en plus lointaines.</p>
 <p>Le fond diffus, c'est la même chose, en trois dimensions et avec de la lumière. À la recombinaison, <strong>tout l'espace émet en même temps</strong>. La lumière émise tout près de nous nous a atteints très vite. Celle émise un peu plus loin est arrivée un peu plus tard, et ainsi de suite. Aujourd'hui, ce qui nous arrive vient d'une région juste assez lointaine pour que le trajet ait duré 13,8 milliards d'années. Demain, ce sera une région à peine plus lointaine.</p>
 <h3 style="font-size:17px;font-weight:500;margin:1.5rem 0 .5rem">La différence essentielle : l'éclair a un bout, l'univers non</h3>
-<p>Le tonnerre finit par s'arrêter parce que l'éclair a une longueur limitée. Pour un éclair de 3 km, le son du bout le plus lointain arrive environ 9 secondes après celui du bout le plus proche. Une fois ce dernier son arrivé, il n'y a plus rien en route : le silence revient.</p>
+<p>Le tonnerre finit par s'arrêter parce que l'éclair a une longueur limitée. Pour un éclair de 3 km, le son du bout le plus lointain arrive environ 9 secondes après celui du bout le plus proche. Une fois ce dernier son arrivé, il n'y a plus rien en route : le silence revient.</p>
 <p>Pour le fond diffus, ce qui a émis la lumière, ce n'est pas un objet posé quelque part : c'est <strong>l'univers tout entier</strong>, qui remplissait tout l'espace de façon quasi uniforme. Et l'univers n'a pas de bord. On ne sait pas s'il est infini, mais il est en tout cas bien plus grand que la partie qu'on peut observer. Il y a donc <strong>toujours</strong> une région un peu plus lointaine dont la lumière est encore en route vers nous. Le « bout de l'éclair » n'arrive jamais.</p>
 <p>Imaginez un éclair <em>infiniment long</em> : son tonnerre ne s'arrêterait jamais. Il viendrait simplement de parties de plus en plus lointaines, et serait de plus en plus faible. C'est exactement ce qui se passe avec le fond diffus, qui vient d'un peu plus loin chaque jour et refroidit doucement. Le « tonnerre » de la recombinaison roule depuis 13,8 milliards d'années, et il roulera toujours.</p>
 <p>On ne cherche donc pas à « rattraper » une lumière partie avant nous : on reçoit en permanence une lumière différente, venue d'un peu plus loin.</p>
@@ -121,11 +137,11 @@ a{color:#378ADD}
 </div>
 <ul>
 <li><strong>La courbe orange monte d'abord</strong> : le photon avance vers nous, mais tant qu'il est au-delà de la sphère de Hubble, l'espace s'étire plus vite qu'il ne le parcourt.</li>
-<li><strong>Vers 4 milliards d'années, elle redescend</strong> : le photon atteint sa distance maximale (environ 5 800 millions d'années-lumière), puis se rapproche jusqu'à nous atteindre aujourd'hui.</li>
+<li><strong>Vers 4 milliards d'années, elle redescend</strong> : le photon atteint sa distance maximale (environ 5 800 millions d'années-lumière), puis se rapproche jusqu'à nous atteindre aujourd'hui.</li>
 <li><strong>La courbe verte ne fait que s'éloigner</strong> : la source passe d'environ 42 millions à 46 milliards d'années-lumière, en s'éloignant plus vite que la lumière.</li>
 </ul>
-<p>Ce même étirement de l'espace a allongé les longueurs d'onde d'un facteur d'environ 1 100. La lumière d'un gaz à 3 000 K, qui brillait en visible et en infrarouge, nous arrive donc sous forme de micro-ondes à 2,7 K. Et le refroidissement continue : la température du fond diffus baisse d'environ 2 milliardièmes de degré par an.</p>
-<p>La <strong>sphère de Hubble</strong> est le résultat d'un calcul : avec la loi de Hubble <em>v = H × d</em>, c'est la distance où la vitesse d'éloignement égale <em>c</em>, soit <em>R = c / H</em>, environ 14 400 millions d'années-lumière aujourd'hui. Ce n'est pas un objet physique, et comme H change avec le temps, ce rayon change aussi.</p>
+<p>Ce même étirement de l'espace a allongé les longueurs d'onde d'un facteur d'environ 1 100. La lumière d'un gaz à 3 000 K, qui brillait en visible et en infrarouge, nous arrive donc sous forme de micro-ondes à 2,7 K. Et le refroidissement continue : la température du fond diffus baisse d'environ 2 milliardièmes de degré par an.</p>
+<p>La <strong>sphère de Hubble</strong> est le résultat d'un calcul : avec la loi de Hubble <em>v = H × d</em>, c'est la distance où la vitesse d'éloignement égale <em>c</em>, soit <em>R = c / H</em>, environ 14 400 millions d'années-lumière aujourd'hui. Ce n'est pas un objet physique, et comme H change avec le temps, ce rayon change aussi.</p>
 
 <h2>Animation 3 — la même chose en 3D</h2>
 <p>Il n'y a pas de bord de l'univers où poser un observateur. On se place donc au centre de notre sphère observable : ce n'est pas un privilège, n'importe quelle galaxie verrait la même chose autour d'elle. L'espace est en 3D, le temps est la quatrième dimension que vous faites défiler. Faites glisser horizontalement pour pivoter.</p>
@@ -161,10 +177,62 @@ a{color:#378ADD}
 <p>Les infimes variations de température de cette carte sont très riches en informations. Elles ont permis de mesurer :</p>
 <ul>
 <li><strong>l'âge de l'univers</strong> : 13,8 milliards d'années ;</li>
-<li><strong>sa vitesse d'expansion actuelle</strong> (la constante de Hubble) : environ 67,7 km/s par mégaparsec ;</li>
-<li><strong>sa composition</strong> : environ 5 % de matière ordinaire, 27 % de matière noire et 68 % d'énergie noire.</li>
+<li><strong>sa vitesse d'expansion actuelle</strong> (la constante de Hubble) : environ 67,7 km/s par mégaparsec ;</li>
+<li><strong>sa composition</strong> : environ 5 % de matière ordinaire, 27 % de matière noire et 68 % d'énergie noire.</li>
 </ul>
 <p>Ce sont ces paramètres qui servent aux calculs des deux animations de cette page.</p>
+
+<h2>Ce que le fond diffus a apporté à la science</h2>
+<p>Cette faible lueur est devenue l'une des sources d'information les plus riches de toute la physique. Voici ce qu'elle nous a appris.</p>
+<h3>1. L'univers a eu un passé chaud et dense</h3>
+<p>Un spectre de corps noir aussi parfait n'est possible que si tout l'univers a d'abord été une soupe chaude en équilibre. C'est la preuve la plus solide du modèle du Big Bang ; les modèles d'univers éternel et immuable n'ont pas pu l'expliquer et ont été abandonnés.</p>
+<h3>2. Un recensement précis de l'univers</h3>
+<p>Âge, vitesse d'expansion, composition : la carte de Planck fixe ces valeurs à environ 1 % près. Elle montre en particulier que la matière ordinaire, celle des étoiles et de nos corps, ne fait qu'environ 5 % du total. Le reste est de la matière noire et de l'énergie noire, dont on ignore encore la nature.</p>
+<h3>3. La forme de l'espace</h3>
+<p>La taille apparente des taches, environ un degré sur le ciel, dépend de la géométrie de l'univers. Elle indique que l'espace est « plat » à quelques millièmes près : deux rayons de lumière parallèles le restent.</p>
+<h3>4. L'origine des galaxies</h3>
+<p>Les écarts d'un cent-millième entre zones chaudes et froides sont les germes de toutes les structures. Les simulations qui partent de ces germes et laissent agir la gravité reproduisent la « toile cosmique » de galaxies observée aujourd'hui.</p>
+<h3>5. De la physique des particules</h3>
+<p>Le fond diffus « pèse » aussi les particules invisibles du jeune univers. Il confirme l'existence de trois familles de neutrinos et limite la masse totale de ces particules fantômes, ce qu'aucun accélérateur ne sait encore faire aussi bien.</p>
+<h3>6. Une fenêtre sur la première fraction de seconde</h3>
+<p>Le ciel a la même température partout, même entre des régions trop éloignées pour avoir jamais échangé de la chaleur. Et ses taches ont presque la même intensité à toutes les échelles. Ces deux faits sont la principale raison de croire à l'<em>inflation</em>, une expansion fulgurante juste après le Big Bang. Le télescope ACT a confirmé en 2025 que ces fluctuations sont presque identiques d'une échelle à l'autre, comme l'inflation le prédit. En revanche, la signature la plus directe de l'inflation, des ondes gravitationnelles primordiales imprimées dans la polarisation du fond diffus, n'a pas encore été détectée.</p>
+<h3>7. Une énigme toujours ouverte</h3>
+<p>D'après le fond diffus, l'univers devrait s'étendre aujourd'hui à environ 67 à 68 km/s par mégaparsec. Mais les mesures directes sur les galaxies proches donnent nettement plus : 73,5 km/s par mégaparsec selon la mesure la plus précise, publiée en avril 2026. Cet écart, la « tension de Hubble », résiste à toutes les vérifications. Il pourrait signaler qu'il manque quelque chose à notre modèle de l'univers.</p>
+
+<h2>La fresque du temps</h2>
+<p>Du Big Bang à aujourd'hui, puis vers le futur. L'échelle n'est pas régulière : les premières lignes couvrent des fractions de seconde, les dernières des durées immenses. Pour se repérer, le « calendrier cosmique » ramène les 13,8 milliards d'années à une seule année : le Big Bang au 1er janvier à minuit, aujourd'hui au 31 décembre à minuit.</p>
+<div class="fig fr">
+<div class="row fut" style="--c:#B4B2A9"><div class="tm">?</div><div class="rl"></div><div class="bx"><p><b>Avant ?</b></p><p>Il n'existe aucune observation de cette époque, seulement des hypothèses : voir <a href="#avant">Et avant le Big Bang ?</a></p></div></div>
+<div class="row " style="--c:#7F77DD"><div class="tm">10⁻⁴³ s</div><div class="rl"></div><div class="bx"><p><b>Ère de Planck</b></p><p>La limite de nos théories : il faudrait une théorie quantique de la gravitation pour décrire cet instant.</p></div></div>
+<div class="row " style="--c:#7F77DD"><div class="tm">10⁻³⁶ à 10⁻³² s</div><div class="rl"></div><div class="bx"><p><b>Inflation (hypothèse la mieux étayée)</b></p><p>L'espace grossit d'un facteur gigantesque en une fraction de seconde. De minuscules fluctuations quantiques sont étirées : elles deviendront les taches du fond diffus, puis les galaxies.</p></div></div>
+<div class="row " style="--c:#7F77DD"><div class="tm">10⁻⁶ s</div><div class="rl"></div><div class="bx"><p><b>Naissance des protons et neutrons</b></p><p>Les quarks s'assemblent dans une soupe à des milliers de milliards de degrés.</p></div></div>
+<div class="row " style="--c:#7F77DD"><div class="tm">3 à 20 min</div><div class="rl"></div><div class="bx"><p><b>Formation des premiers noyaux</b></p><p>Hydrogène (environ 75 % de la masse) et hélium (environ 25 %), plus des traces de lithium.</p><p class="cal">Calendrier cosmique : 1er janvier, 0 h 00</p></div></div>
+<div class="row hl" style="--c:#D85A30"><div class="tm">380 000 ans</div><div class="rl"></div><div class="bx"><p><b>Recombinaison : départ du fond diffus</b></p><p>Les premiers atomes se forment, l'univers devient transparent à 3 000 K. C'est la lumière dont parle cette page.</p><p class="cal">Calendrier cosmique : 1er janvier, 0 h 14</p></div></div>
+<div class="row " style="--c:#888780"><div class="tm">de 380 000 ans à ~100 millions d'années</div><div class="rl"></div><div class="bx"><p><b>Âges sombres</b></p><p>Plus de lumière nouvelle : pas encore d'étoiles, seulement du gaz qui se condense lentement autour des zones un peu plus denses.</p></div></div>
+<div class="row " style="--c:#1D9E75"><div class="tm">~100 à 200 millions d'années</div><div class="rl"></div><div class="bx"><p><b>Premières étoiles</b></p><p>Les premières étoiles et galaxies s'allument. Le télescope James Webb en observe déjà quelques-unes.</p><p class="cal">Calendrier cosmique : 4 janvier</p></div></div>
+<div class="row " style="--c:#1D9E75"><div class="tm">~0,2 à 1 milliard d'années</div><div class="rl"></div><div class="bx"><p><b>Réionisation</b></p><p>La lumière des premières étoiles ionise de nouveau le gaz entre les galaxies.</p><p class="cal">Calendrier cosmique : fin janvier</p></div></div>
+<div class="row " style="--c:#1D9E75"><div class="tm">~1 milliard d'années</div><div class="rl"></div><div class="bx"><p><b>Naissance de la Voie lactée</b></p><p>Ses plus vieilles étoiles ont environ 13 milliards d'années.</p><p class="cal">Calendrier cosmique : fin janvier</p></div></div>
+<div class="row " style="--c:#1D9E75"><div class="tm">~8 milliards d'années</div><div class="rl"></div><div class="bx"><p><b>L'expansion se met à accélérer</b></p><p>L'énergie noire prend le dessus sur l'attraction de la matière.</p><p class="cal">Calendrier cosmique : fin juillet</p></div></div>
+<div class="row " style="--c:#1D9E75"><div class="tm">9,2 milliards d'années</div><div class="rl"></div><div class="bx"><p><b>Naissance du Soleil et de la Terre</b></p><p>Il y a 4,6 milliards d'années.</p><p class="cal">Calendrier cosmique : 1er septembre</p></div></div>
+<div class="row hl" style="--c:var(--tx)"><div class="tm">13,8 milliards d'années</div><div class="rl"></div><div class="bx"><p><b>Aujourd'hui : vous êtes ici</b></p><p>Le fond diffus nous arrive à 2,725 K. Notre espèce existe depuis environ 300 000 ans.</p><p class="cal">Calendrier cosmique : 31 décembre, 23 h 48 pour Homo sapiens</p></div></div>
+<p class="sep">— LE FUTUR (prévisions) —</p>
+<div class="row fut" style="--c:#B4B2A9"><div class="tm">+1 milliard d'années</div><div class="rl"></div><div class="bx"><p><b>La Terre devient trop chaude</b></p><p>Le Soleil brille de plus en plus fort ; les océans finissent par s'évaporer.</p></div></div>
+<div class="row fut" style="--c:#B4B2A9"><div class="tm">+5 milliards d'années</div><div class="rl"></div><div class="bx"><p><b>Fin du Soleil</b></p><p>Il gonfle en géante rouge, puis devient une naine blanche.</p></div></div>
+<div class="row fut" style="--c:#B4B2A9"><div class="tm">+10 milliards d'années</div><div class="rl"></div><div class="bx"><p><b>Voie lactée et Andromède</b></p><p>Les dernières mesures de Hubble et Gaia ne donnent plus qu'environ une chance sur deux que les deux galaxies fusionnent d'ici là.</p></div></div>
+<div class="row fut" style="--c:#B4B2A9"><div class="tm">+100 milliards d'années</div><div class="rl"></div><div class="bx"><p><b>Un ciel qui se vide</b></p><p>L'expansion accélérée a emporté hors de vue toutes les galaxies au-delà de notre groupe local. Le fond diffus s'est étiré en ondes radio, à quelques millièmes de degré au-dessus du zéro absolu.</p></div></div>
+<div class="row fut" style="--c:#B4B2A9"><div class="tm">+100 000 milliards d'années</div><div class="rl"></div><div class="bx"><p><b>Les dernières étoiles s'éteignent</b></p><p>Il ne reste que des restes d'étoiles et des trous noirs.</p></div></div>
+<div class="row fut" style="--c:#B4B2A9"><div class="tm">~10¹⁰⁰ ans</div><div class="rl"></div><div class="bx"><p><b>Les trous noirs s'évaporent</b></p><p>Selon Hawking, même les trous noirs finissent par disparaître. Il ne reste qu'un univers froid, sombre et presque vide.</p></div></div>
+</div>
+
+<h2 id="avant">Et avant le Big Bang ?</h2>
+<p>Dans le modèle actuel, le « Big Bang » désigne l'état très chaud et très dense d'où tout est parti, pas forcément un commencement. Si l'on remonte le temps avec nos équations, on arrive à une densité infinie, une <em>singularité</em> : ce n'est pas une description de la réalité, c'est le signe que la théorie ne s'applique plus. Pour aller plus loin, il faudrait unir la relativité générale et la mécanique quantique, ce que personne n'a encore réussi. Plusieurs pistes existent, toutes non confirmées :</p>
+<ul>
+<li><strong>Pas d'« avant » du tout.</strong> Dans la proposition « sans bord » de James Hartle et Stephen Hawking, le temps se comporte près de l'origine comme une dimension d'espace. Demander ce qu'il y avait avant reviendrait à demander ce qu'il y a au nord du pôle Nord.</li>
+<li><strong>L'inflation éternelle.</strong> L'inflation ne se serait jamais arrêtée partout à la fois. Notre univers serait une « bulle » où elle a cessé, parmi une infinité d'autres : c'est l'une des versions du multivers.</li>
+<li><strong>Le grand rebond.</strong> Un univers précédent se serait contracté jusqu'à une densité extrême, puis aurait rebondi pour donner le nôtre. Certaines théories de gravitation quantique, comme la gravitation quantique à boucles, remplacent ainsi la singularité par un rebond.</li>
+<li><strong>Les univers cycliques.</strong> Dans le modèle « ekpyrotique » de Paul Steinhardt et Neil Turok, le Big Bang serait la collision de deux « membranes » dans des dimensions supplémentaires, répétée de cycle en cycle. Dans la cosmologie conforme cyclique de Roger Penrose, la fin infiniment diluée d'un univers deviendrait le Big Bang du suivant ; Penrose a cru en voir des traces dans le fond diffus, mais ces signaux sont très contestés.</li>
+</ul>
+<p>Le fond diffus reste notre meilleur outil pour trancher. Si l'on détecte un jour les ondes gravitationnelles primordiales dans sa polarisation, ce sera un argument fort pour l'inflation, et cela exclurait les modèles ekpyrotiques, qui n'en prédisent presque pas. C'est l'un des objectifs principaux des prochaines générations de télescopes.</p>
 
 <h2>Pour aller plus loin</h2>
 <ul>
@@ -174,7 +242,7 @@ a{color:#378ADD}
 <li><a href="https://www.pbs.org/video/this-thing-is-270c-and-is-everywhere-gzw8lf">This Thing is −270°C and is EVERYWHERE</a> (PBS, en anglais)</li>
 <li><a href="https://www.bnf.fr/fr/mediatheque/le-fond-diffus-cosmologique-et-les-grandes-structures-de-lunivers">Le fond diffus cosmologique et les grandes structures de l'univers</a> (conférence BnF)</li>
 </ul>
-<footer>Calculs : univers plat ΛCDM, H₀ = 67,7 km/s/Mpc, Ωm = 0,311 (paramètres Planck 2018), recombinaison à z ≈ 1090. Distances propres intégrées numériquement.</footer>
+<footer>Calculs : univers plat ΛCDM, H₀ = 67,7 km/s/Mpc, Ωm = 0,311 (paramètres Planck 2018), recombinaison à z ≈ 1090. Distances propres intégrées numériquement.</footer>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
