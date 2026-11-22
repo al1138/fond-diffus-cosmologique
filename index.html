@@ -63,7 +63,39 @@ a{color:#378ADD}
 <p>Point essentiel : elle a été émise <strong>partout à la fois</strong>. Le Big Bang n'est pas une explosion en un point d'un espace vide ; c'est tout l'espace qui était chaud et dense. À chaque instant, on reçoit les photons partis d'une région dont la distance est juste celle qu'il fallait pour qu'ils arrivent maintenant. L'an prochain, on verra ceux d'une région un peu plus lointaine.</p>
 <p>Et l'expansion <strong>peut</strong> dépasser la vitesse de la lumière : la limite <em>c</em> vaut pour ce qui se déplace <em>dans</em> l'espace, pas pour l'étirement de l'espace lui-même.</p>
 
-<h2>Animation 1 — le trajet d'un photon</h2>
+<h2>Pourquoi cette lumière n'arrête pas d'arriver</h2>
+<p>Pensez à un orage avec un long éclair horizontal, de plusieurs kilomètres. Tout l'éclair claque au même instant, et pourtant on n'entend pas un seul « clac » : on entend un tonnerre qui <strong>roule</strong> pendant plusieurs secondes. Le son de la partie la plus proche arrive en premier, puis celui des parties de plus en plus lointaines.</p>
+<p>Le fond diffus, c'est la même chose, en trois dimensions et avec de la lumière. À la recombinaison, <strong>tout l'espace émet en même temps</strong>. La lumière émise tout près de nous nous a atteints très vite. Celle émise un peu plus loin est arrivée un peu plus tard, et ainsi de suite. Aujourd'hui, ce qui nous arrive vient d'une région juste assez lointaine pour que le trajet ait duré 13,8 milliards d'années. Demain, ce sera une région à peine plus lointaine.</p>
+<p>On ne cherche donc pas à « rattraper » une lumière partie avant nous : on reçoit en permanence une lumière différente, venue d'un peu plus loin. Le « tonnerre » de la recombinaison n'a jamais cessé de rouler.</p>
+
+<h2>Animation 1 — une lumière qui arrive de plus en plus loin</h2>
+<p>Une coupe de l'univers vue de dessus. Pour se concentrer sur cette idée, l'expansion est mise de côté : chaque point est placé à sa distance d'aujourd'hui. Seuls les photons qui viennent vers nous sont dessinés.</p>
+<div class="fig">
+<div style="margin-bottom:6px;line-height:1.9">
+<span class="lg"><span class="dt" style="background:var(--tx)"></span>Nous</span>
+<span class="lg"><span class="dt" style="background:#1D9E75"></span>Sources (émettent toutes en même temps)</span>
+<span class="lg"><span class="dt" style="background:#D85A30"></span>Photons en route vers nous</span>
+<span class="lg"><span style="display:inline-block;width:14px;border-top:2.5px solid #D85A30"></span>Région dont la lumière arrive à l'instant t</span>
+<span class="lg"><span style="display:inline-block;width:14px;border-top:1.5px dashed #1D9E75"></span>Région dont la lumière arrive aujourd'hui</span>
+</div>
+<canvas id="cv3" style="width:100%;height:380px;display:block" aria-label="Animation : des photons partent de partout et convergent vers nous"></canvas>
+<div class="ctl"><button id="pl3">Lecture</button><input type="range" id="sl3" min="0" max="1000" step="1" value="0" aria-label="Temps"></div>
+<p class="tt" id="tt3"></p>
+<p class="st" id="st3"></p>
+<div class="grid">
+<div class="mc"><p class="ml">Distance de la région au moment du départ</p><p class="mv" id="c1"></p></div>
+<div class="mc"><p class="ml">Distance de cette région à l'instant t</p><p class="mv" id="c2"></p></div>
+<div class="mc"><p class="ml">Durée du trajet</p><p class="mv" id="c3"></p></div>
+</div>
+<p class="note">Faites défiler le temps : l'anneau orange grandit. À chaque instant, la lumière qui nous arrive vient de cet anneau, jamais du même endroit deux fois.</p>
+</div>
+<ul>
+<li><strong>Au départ, la région était très proche</strong> : la lumière qui nous arrive aujourd'hui est partie d'à peine 42 millions d'années-lumière.</li>
+<li><strong>Mais le trajet a duré 13,8 milliards d'années</strong>, parce que l'espace s'est étiré pendant le voyage. C'est ce que détaillent les deux animations suivantes.</li>
+<li><strong>Et ça ne s'arrêtera pas</strong> : dans un milliard d'années, on verra encore un fond diffus, venu d'un anneau un peu plus grand.</li>
+</ul>
+
+<h2>Animation 2 — le trajet d'un photon</h2>
 <p>Distance entre nous et un photon du fond diffus, et entre nous et le point d'où il est parti, au fil du temps.</p>
 <div class="fig">
 <div style="margin-bottom:6px">
@@ -91,7 +123,7 @@ a{color:#378ADD}
 <p>Ce même étirement de l'espace a allongé les longueurs d'onde d'un facteur d'environ 1 100. La lumière d'un gaz à 3 000 K, qui brillait en visible et en infrarouge, nous arrive donc sous forme de micro-ondes à 2,7 K. Et le refroidissement continue : la température du fond diffus baisse d'environ 2 milliardièmes de degré par an.</p>
 <p>La <strong>sphère de Hubble</strong> est le résultat d'un calcul : avec la loi de Hubble <em>v = H × d</em>, c'est la distance où la vitesse d'éloignement égale <em>c</em>, soit <em>R = c / H</em>, environ 14 400 millions d'années-lumière aujourd'hui. Ce n'est pas un objet physique, et comme H change avec le temps, ce rayon change aussi.</p>
 
-<h2>Animation 2 — la même chose en 3D</h2>
+<h2>Animation 3 — la même chose en 3D</h2>
 <p>Il n'y a pas de bord de l'univers où poser un observateur. On se place donc au centre de notre sphère observable : ce n'est pas un privilège, n'importe quelle galaxie verrait la même chose autour d'elle. L'espace est en 3D, le temps est la quatrième dimension que vous faites défiler. Faites glisser horizontalement pour pivoter.</p>
 <div class="fig">
 <div style="margin-bottom:6px;line-height:1.9">
@@ -188,6 +220,36 @@ const set=i=>{cur=i;draw();info()};
 player(document.getElementById('pl1'),document.getElementById('sl1'),set);
 window.addEventListener('resize',()=>{size();draw()});
 matchMedia('(prefers-color-scheme:dark)').addEventListener('change',draw);
+size();set(0);
+})();
+
+const V={mut:'--tx3',sec:'--tx2',pri:'--tx'};
+(function(){
+const cv=document.getElementById('cv3'),cx=cv.getContext('2d');let W,Hh,cur=0;
+const D=Xr/8,FG=Xr/10,field=[];
+for(let y=-12;y<=12;y++)for(let x=-12;x<=12;x++){const px=(x+(y%2?0.5:0))*FG,py=y*FG*0.866;const d=Math.hypot(px,py);if(d<Xr*1.12&&d>FG*0.4)field.push([px,py,d])}
+function size(){const r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;W=r.width;Hh=r.height;cv.width=W*d;cv.height=Hh*d;cx.setTransform(d,0,0,d,0,0)}
+function dot(x,y,r,c,a){cx.globalAlpha=a;cx.fillStyle=c;cx.beginPath();cx.arc(x,y,r,0,7);cx.fill();cx.globalAlpha=1}
+function draw(){
+ cx.clearRect(0,0,W,Hh);const ox=W/2,oy=Hh/2,k=(Math.min(W,Hh)/2-8)/(Xr*1.13),ch=Xr-X[cur];
+ const g=css(V.mut),t2=css(V.sec),tp=css(V.pri);
+ field.forEach(([x,y,d])=>{const near=Math.abs(d-ch)<FG*0.55;dot(ox+x*k,oy+y*k,near?3:2,near?'#D85A30':g,near?1:(d<ch?0.2:0.55))});
+ cx.setLineDash([4,4]);cx.strokeStyle='#1D9E75';cx.lineWidth=1.2;cx.beginPath();cx.arc(ox,oy,Xr*k,0,7);cx.stroke();cx.setLineDash([]);
+ for(let r=0;r<16;r++){const th=r/16*Math.PI*2,c=Math.cos(th),s=Math.sin(th);
+  for(let j=1;j<=9;j++){const re=D*j,ex=ox+c*re*k,ey=oy+s*re*k;
+   if(re>ch+1e-9){const rp=re-ch,px=ox+c*rp*k,py=oy+s*rp*k;cx.globalAlpha=.35;cx.strokeStyle='#D85A30';cx.lineWidth=1;cx.beginPath();cx.moveTo(ex,ey);cx.lineTo(px,py);cx.stroke();cx.globalAlpha=1;dot(px,py,3.2,'#D85A30',1);dot(ex,ey,3,'#1D9E75',1)}
+   else dot(ex,ey,3,'#1D9E75',.25)}}
+ if(ch*k>1){cx.strokeStyle='#D85A30';cx.lineWidth=2.5;cx.beginPath();cx.arc(ox,oy,ch*k,0,7);cx.stroke()}
+ dot(ox,oy,6,tp,1);cx.font='12px system-ui,sans-serif';cx.fillStyle=tp;cx.textAlign='center';cx.lineWidth=4;cx.strokeStyle=css('--card');cx.lineJoin='round';cx.strokeText('Nous',ox,oy-12);cx.fillText('Nous',ox,oy-12);
+}
+function info(){const i=cur,ch=Xr-X[i];
+ document.getElementById('tt3').textContent='t = '+fT(T[i])+' après le Big Bang';
+ setD('c1',A[0]*ch);setD('c2',A[i]*ch);
+ document.getElementById('c3').textContent=i===0?'—':fT(T[i]-T[0]);
+ document.getElementById('st3').textContent=i===0?'Recombinaison : tout l\'espace émet en même temps (points verts). Rien n\'est encore arrivé jusqu\'à nous.':i>=N?'Aujourd\'hui : la lumière qui nous arrive est partie de l\'anneau orange, qui touche maintenant le pointillé. Demain, ce sera un anneau à peine plus grand.':'Nous recevons maintenant la lumière partie de l\'anneau orange. Celle des sources plus lointaines est encore en route (points orange sur les rayons) ; celle des sources plus proches est déjà passée.'}
+const set=i=>{cur=i;draw();info()};
+player(document.getElementById('pl3'),document.getElementById('sl3'),set);
+window.addEventListener('resize',()=>{size();draw()});
 size();set(0);
 })();
 
