@@ -66,10 +66,14 @@ a{color:#378ADD}
 <h2>Pourquoi cette lumière n'arrête pas d'arriver</h2>
 <p>Pensez à un orage avec un long éclair horizontal, de plusieurs kilomètres. Tout l'éclair claque au même instant, et pourtant on n'entend pas un seul « clac » : on entend un tonnerre qui <strong>roule</strong> pendant plusieurs secondes. Le son de la partie la plus proche arrive en premier, puis celui des parties de plus en plus lointaines.</p>
 <p>Le fond diffus, c'est la même chose, en trois dimensions et avec de la lumière. À la recombinaison, <strong>tout l'espace émet en même temps</strong>. La lumière émise tout près de nous nous a atteints très vite. Celle émise un peu plus loin est arrivée un peu plus tard, et ainsi de suite. Aujourd'hui, ce qui nous arrive vient d'une région juste assez lointaine pour que le trajet ait duré 13,8 milliards d'années. Demain, ce sera une région à peine plus lointaine.</p>
-<p>On ne cherche donc pas à « rattraper » une lumière partie avant nous : on reçoit en permanence une lumière différente, venue d'un peu plus loin. Le « tonnerre » de la recombinaison n'a jamais cessé de rouler.</p>
+<h3 style="font-size:17px;font-weight:500;margin:1.5rem 0 .5rem">La différence essentielle : l'éclair a un bout, l'univers non</h3>
+<p>Le tonnerre finit par s'arrêter parce que l'éclair a une longueur limitée. Pour un éclair de 3 km, le son du bout le plus lointain arrive environ 9 secondes après celui du bout le plus proche. Une fois ce dernier son arrivé, il n'y a plus rien en route : le silence revient.</p>
+<p>Pour le fond diffus, ce qui a émis la lumière, ce n'est pas un objet posé quelque part : c'est <strong>l'univers tout entier</strong>, qui remplissait tout l'espace de façon quasi uniforme. Et l'univers n'a pas de bord. On ne sait pas s'il est infini, mais il est en tout cas bien plus grand que la partie qu'on peut observer. Il y a donc <strong>toujours</strong> une région un peu plus lointaine dont la lumière est encore en route vers nous. Le « bout de l'éclair » n'arrive jamais.</p>
+<p>Imaginez un éclair <em>infiniment long</em> : son tonnerre ne s'arrêterait jamais. Il viendrait simplement de parties de plus en plus lointaines, et serait de plus en plus faible. C'est exactement ce qui se passe avec le fond diffus, qui vient d'un peu plus loin chaque jour et refroidit doucement. Le « tonnerre » de la recombinaison roule depuis 13,8 milliards d'années, et il roulera toujours.</p>
+<p>On ne cherche donc pas à « rattraper » une lumière partie avant nous : on reçoit en permanence une lumière différente, venue d'un peu plus loin.</p>
 
 <h2>Animation 1 — une lumière qui arrive de plus en plus loin</h2>
-<p>Une coupe de l'univers vue de dessus. Pour se concentrer sur cette idée, l'expansion est mise de côté : chaque point est placé à sa distance d'aujourd'hui. Seuls les photons qui viennent vers nous sont dessinés.</p>
+<p>Une coupe de l'univers vue de dessus. Pour se concentrer sur cette idée, l'expansion est mise de côté : chaque point est placé à sa distance d'aujourd'hui. Seuls les photons qui viennent vers nous sont dessinés. Les sources continuent au-delà du cadre, sans fin.</p>
 <div class="fig">
 <div style="margin-bottom:6px;line-height:1.9">
 <span class="lg"><span class="dt" style="background:var(--tx)"></span>Nous</span>
@@ -227,20 +231,20 @@ const V={mut:'--tx3',sec:'--tx2',pri:'--tx'};
 (function(){
 const cv=document.getElementById('cv3'),cx=cv.getContext('2d');let W,Hh,cur=0;
 const D=Xr/8,FG=Xr/10,field=[];
-for(let y=-12;y<=12;y++)for(let x=-12;x<=12;x++){const px=(x+(y%2?0.5:0))*FG,py=y*FG*0.866;const d=Math.hypot(px,py);if(d<Xr*1.12&&d>FG*0.4)field.push([px,py,d])}
+for(let y=-20;y<=20;y++)for(let x=-20;x<=20;x++){const px=(x+(y%2?0.5:0))*FG,py=y*FG*0.866;const d=Math.hypot(px,py);if(d>FG*0.4)field.push([px,py,d])}
 function size(){const r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;W=r.width;Hh=r.height;cv.width=W*d;cv.height=Hh*d;cx.setTransform(d,0,0,d,0,0)}
 function dot(x,y,r,c,a){cx.globalAlpha=a;cx.fillStyle=c;cx.beginPath();cx.arc(x,y,r,0,7);cx.fill();cx.globalAlpha=1}
 function draw(){
- cx.clearRect(0,0,W,Hh);const ox=W/2,oy=Hh/2,k=(Math.min(W,Hh)/2-8)/(Xr*1.13),ch=Xr-X[cur];
+ cx.clearRect(0,0,W,Hh);cx.save();cx.beginPath();cx.rect(0,0,W,Hh);cx.clip();const ox=W/2,oy=Hh/2,k=(Math.min(W,Hh)/2-8)/(Xr*1.13),ch=Xr-X[cur];
  const g=css(V.mut),t2=css(V.sec),tp=css(V.pri);
  field.forEach(([x,y,d])=>{const near=Math.abs(d-ch)<FG*0.55;dot(ox+x*k,oy+y*k,near?3:2,near?'#D85A30':g,near?1:(d<ch?0.2:0.55))});
  cx.setLineDash([4,4]);cx.strokeStyle='#1D9E75';cx.lineWidth=1.2;cx.beginPath();cx.arc(ox,oy,Xr*k,0,7);cx.stroke();cx.setLineDash([]);
  for(let r=0;r<16;r++){const th=r/16*Math.PI*2,c=Math.cos(th),s=Math.sin(th);
-  for(let j=1;j<=9;j++){const re=D*j,ex=ox+c*re*k,ey=oy+s*re*k;
+  for(let j=1;j<=16;j++){const re=D*j,ex=ox+c*re*k,ey=oy+s*re*k;
    if(re>ch+1e-9){const rp=re-ch,px=ox+c*rp*k,py=oy+s*rp*k;cx.globalAlpha=.35;cx.strokeStyle='#D85A30';cx.lineWidth=1;cx.beginPath();cx.moveTo(ex,ey);cx.lineTo(px,py);cx.stroke();cx.globalAlpha=1;dot(px,py,3.2,'#D85A30',1);dot(ex,ey,3,'#1D9E75',1)}
    else dot(ex,ey,3,'#1D9E75',.25)}}
  if(ch*k>1){cx.strokeStyle='#D85A30';cx.lineWidth=2.5;cx.beginPath();cx.arc(ox,oy,ch*k,0,7);cx.stroke()}
- dot(ox,oy,6,tp,1);cx.font='12px system-ui,sans-serif';cx.fillStyle=tp;cx.textAlign='center';cx.lineWidth=4;cx.strokeStyle=css('--card');cx.lineJoin='round';cx.strokeText('Nous',ox,oy-12);cx.fillText('Nous',ox,oy-12);
+ dot(ox,oy,6,tp,1);cx.font='12px system-ui,sans-serif';cx.fillStyle=tp;cx.textAlign='center';cx.lineWidth=4;cx.strokeStyle=css('--card');cx.lineJoin='round';cx.strokeText('Nous',ox,oy-12);cx.fillText('Nous',ox,oy-12);cx.restore();
 }
 function info(){const i=cur,ch=Xr-X[i];
  document.getElementById('tt3').textContent='t = '+fT(T[i])+' après le Big Bang';
