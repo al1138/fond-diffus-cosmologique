@@ -242,7 +242,8 @@ a{color:#378ADD}
 <li><a href="https://www.pbs.org/video/this-thing-is-270c-and-is-everywhere-gzw8lf">This Thing is −270°C and is EVERYWHERE</a> (PBS, en anglais)</li>
 <li><a href="https://www.bnf.fr/fr/mediatheque/le-fond-diffus-cosmologique-et-les-grandes-structures-de-lunivers">Le fond diffus cosmologique et les grandes structures de l'univers</a> (conférence BnF)</li>
 </ul>
-<footer>Calculs : univers plat ΛCDM, H₀ = 67,7 km/s/Mpc, Ωm = 0,311 (paramètres Planck 2018), recombinaison à z ≈ 1090. Distances propres intégrées numériquement.</footer>
+<footer>
+<p id="vis" style="margin:0 0 .5rem;display:none"></p>Calculs : univers plat ΛCDM, H₀ = 67,7 km/s/Mpc, Ωm = 0,311 (paramètres Planck 2018), recombinaison à z ≈ 1090. Distances propres intégrées numériquement.</footer>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -384,5 +385,12 @@ size();ovSize();upd(0);loop();
 })();
 </script>
 <script data-goatcounter="https://sensation.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){const base='https://sensation.goatcounter.com/counter/'+encodeURIComponent(location.pathname),el=document.getElementById('vis');
+const get=q=>fetch(base+'.json'+q).then(r=>r.ok?r.json():null).catch(()=>null);
+Promise.all([get(''),get('?start=month')]).then(([all,m])=>{if(!all||!all.count)return;
+const n=t=>String(t).replace(/,/g,'\u202f');
+el.textContent='Cette page a été vue par '+n(all.count)+' visiteurs'+(m&&m.count?' (dont '+n(m.count)+' ces 30 derniers jours)':'')+'. Statistiques anonymes par GoatCounter, sans cookies, mises à jour toutes les quelques heures.';el.style.display='block'})})();
+</script>
 </body>
 </html>
